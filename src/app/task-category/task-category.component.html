@@ -1,0 +1,19 @@
+
+<div class="container margin-top-40 font-size-12">
+    <div class="d-flex align-items-center">
+        <i class="bi bi-envelope margin-right-5"></i>
+        <button type="button" [ngClass]="{ 'active' : clickedTask === '' || clickedTask === taskEnum.alltasks }" class="btn" (click)="fetchValues(taskEnum.alltasks)">My Tasks</button>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-star margin-right-5"></i>
+        <button class="btn" [ngClass]="{ 'active' : clickedTask === taskEnum.starred }" (click)="fetchValues(taskEnum.starred)">Important</button>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-check2-circle margin-right-5"></i>
+        <button class="btn" [ngClass]="{ 'active' : clickedTask === taskEnum.completed }" (click)="fetchValues(taskEnum.completed)">Completed</button>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-trash margin-right-5"></i>
+        <button class="btn" [ngClass]="{ 'active' : clickedTask === taskEnum.deleted }" (click)="fetchValues(taskEnum.deleted)">Deleted</button>
+    </div>
+</div>

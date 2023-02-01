@@ -1,0 +1,73 @@
+<form [formGroup]="searchForm">
+  <input
+    class="input-box"
+    formControlName="searchTasks"
+    type="text"
+    placeholder="  Search Task"
+  />
+</form>
+<div class="container font-size-12">
+  <div class="row container-box" *ngFor="let taskCategory of taskCategoryArray">
+    <div class="col-sm d-flex align-items-center justify-content-between p2">
+      <div>
+        <i
+          *ngIf="taskCategory.starred === false"
+          class="margin-right-5 bi bi-star"
+        ></i>
+        <i
+          *ngIf="taskCategory.starred === true"
+          class="margin-right-5 completed-color bi bi-star-fill"
+        ></i>
+        <i
+          *ngIf="taskCategory.completed === true"
+          class="margin-right-5 completed-color bi bi-check2-circle"
+        ></i>
+        <i
+          *ngIf="taskCategory.completed === false"
+          class="margin-right-5 bi bi-circle"
+        ></i>
+        {{ taskCategory.title }}
+      </div>
+      <div>
+        <span
+          class="margin-right-5 border-radius-20 padding-4 font-weight-600 background-color-yellow"
+          *ngIf="taskCategory.tags.includes('medium')"
+          >medium</span
+        >
+        <span
+          class="margin-right-5 border-radius-20 padding-4 font-weight-600 background-color-green"
+          *ngIf="taskCategory.tags.includes('update')"
+          >update</span
+        >
+        <span
+          class="margin-right-5 border-radius-20 padding-4 font-weight-600 background-color-voilet"
+          *ngIf="taskCategory.tags.includes('blocked')"
+          >blocked</span
+        >
+        <span
+          class="margin-right-5 border-radius-20 padding-4 font-weight-600 background-color-red"
+          *ngIf="taskCategory.tags.includes('high')"
+          >high</span
+        >
+        <span
+          class="margin-right-5 border-radius-20 padding-4 font-weight-600 background-color-blue"
+          *ngIf="taskCategory.tags.includes('low')"
+          >low</span
+        >
+        <span class="margin-right-5">{{
+          taskCategory.due_date | formatdate
+        }}</span>
+        <img
+          src="../../assets/images/dummy.png"
+          class="rounded-circle"
+          alt="Dummy Image"
+          width="30"
+          height="30"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="nodata" *ngIf="taskCategoryArray.length === 0">
+    <span>There is no task for this category.</span>
+  </div>
+</div>
